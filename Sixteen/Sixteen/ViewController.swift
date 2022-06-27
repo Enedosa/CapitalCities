@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -22,6 +22,12 @@ class ViewController: UIViewController {
         
         mapView.addAnnotations([london, oslo, paris, rome, washington])
         
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is Capital else { return nil }
+        let identifier = "Capital"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
     }
 
 
