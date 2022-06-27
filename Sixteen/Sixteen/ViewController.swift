@@ -28,6 +28,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
         guard annotation is Capital else { return nil }
         let identifier = "Capital"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+        }
     }
 
 
