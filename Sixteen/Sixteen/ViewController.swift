@@ -33,7 +33,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotationView?.canShowCallout = true
             let btn = UIButton(type: .detailDisclosure)
             annotationView?.rightCalloutAccessoryView = btn
+        } else {
+            annotationView?.annotation = annotation
         }
+        return annotationView
     }
 
 
